@@ -21,8 +21,16 @@ def deliquencies(primary_featurelayer):
         "geometry",
     ]
 
-    tax_deliquencies.gdf = tax_deliquencies.gdf[red_cols_to_keep]
+    tax_deliquencies = tax_deliquencies.gdf[red_cols_to_keep]
 
-    primary_featurelayer.spatial_join(tax_deliquencies)
+    rename_columns = {
+    "opa_number": "opa_id"
+    }
+
+    tax_deliquencies.rename(columns=rename_columns, inplace=True)
+
+    primary_featurelayer.gdf = primary_featurelayer.gdf.merge(
+        tax_deliquencies, how="left", on="opa_id"
+    )
 
     return primary_featurelayer

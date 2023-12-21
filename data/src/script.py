@@ -42,7 +42,7 @@ vacant_properties = phs_properties(vacant_properties)
 """
 Load L&I Data
 """
-vacant_properties = l_and_i(vacant_properties)
+# vacant_properties = l_and_i(vacant_properties)
 
 """
 Merge RCOs
